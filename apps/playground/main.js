@@ -1,8 +1,6 @@
 // This is a simple Node.js script to demonstrate the Godot setup.
 // In a real implementation, this would be replaced with Godot project files.
 
-const godot = require('godot');
-
 console.log('Godot application setup is complete.');
 console.log('Next steps:');
 console.log('1. Download and install Godot 4.6.1 from the official website.');
