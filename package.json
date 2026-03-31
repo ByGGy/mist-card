@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:backend": "pnpm --filter backend start",
+    "start:server": "pnpm --filter mist-server start",
     "start:frontend": "pnpm --filter frontend dev",
     "start:playground": "pnpm --filter playground start",
-    "start:all": "concurrently \"pnpm start:backend\" \"pnpm start:frontend\" \"pnpm start:playground\"",
+    "start:all": "concurrently \"pnpm start:server\" \"pnpm start:frontend\" \"pnpm start:playground\"",
     "build": "pnpm --filter frontend build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "pnpm --filter frontend lint"
