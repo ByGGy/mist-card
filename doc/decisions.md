@@ -95,5 +95,23 @@ This document outlines the key decisions that need to be made before starting th
 
 These shared dependencies will help maintain consistency, improve code quality, and optimize the development process across the monorepo.
 
+**Note**: The `uuid` module will be used to generate unique identifiers (GUIDs) for the `id` fields in the data models for games and cards.
+
+### 6. Communication Protocol
+**Question**: Which protocol should be used for communication between the client and server?
+
+**Options**:
+- **REST API**: A traditional approach using HTTP requests for communication.
+- **WebSocket**: A protocol for bidirectional communication, suitable for real-time updates.
+- **gRPC**: A high-performance, language-agnostic framework for remote procedure calls.
+
+**Considerations**:
+- Real-time communication requirements.
+- Performance and scalability.
+- Ease of implementation and maintenance.
+- Compatibility with the client and server technologies.
+
+**Decision**: Use gRPC for communication between the client and server. gRPC will be used for all interactions, providing a high-performance, language-agnostic framework for remote procedure calls. This will streamline the implementation and reduce complexity. On the server, we will use the `@grpc/grpc-js` module, which is the pure JavaScript implementation of gRPC for Node.js. For the Godot-based playground application, we will use HTTP requests to fetch data from the server, as integrating gRPC with Godot can be complex and may not be straightforward.
+
 ## Next Steps
 Once these decisions are made, we can proceed with the implementation as outlined in `@nextstep.md`. Each decision will guide the setup and development process, ensuring that the project is built on a solid foundation.
