@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:server": "pnpm --filter mist-server start",
+    "start:server": "pnpm --filter mist-server start-websocket",
     "start:client": "pnpm --filter mist-client dev",
     "start:all": "concurrently \"pnpm start:server\" \"pnpm start:client\" ",
     "build": "pnpm --filter mist-client build",
