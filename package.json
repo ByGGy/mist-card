@@ -6,8 +6,7 @@
   "scripts": {
     "start:server": "pnpm --filter mist-server start",
     "start:client": "pnpm --filter mist-client dev",
-    "start:playground": "pnpm --filter playground start",
-    "start:all": "concurrently \"pnpm start:server\" \"pnpm start:client\" \"pnpm start:playground\"",
+    "start:all": "concurrently \"pnpm start:server\" \"pnpm start:client\" ",
     "build": "pnpm --filter mist-client build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "pnpm --filter mist-client lint"
