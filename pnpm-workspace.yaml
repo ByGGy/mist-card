@@ -1,5 +1,5 @@
 packages:
   - 'apps/mist-server'
-  - 'apps/frontend'
+  - 'apps/mist-client'
   - 'apps/playground'
   - 'packages/*'
