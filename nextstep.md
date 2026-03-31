@@ -41,20 +41,20 @@ This document outlines the next steps for the Mist Card project, focusing on def
      ```
 
 ### 2. Implement Server Communication
-1. **gRPC Server**:
-   - Set up a gRPC server in the `mist-server` to handle remote procedure calls.
-   - Define gRPC services and methods for fetching games and cards.
-   - Use the `@grpc/grpc-js` library to implement the gRPC server.
+1. **WebSocket Server**:
+   - Set up a WebSocket server in the `mist-server` to handle real-time communication.
+   - Use a library like `ws` or `Socket.IO` to implement the WebSocket server.
+   - Define WebSocket events for fetching games and cards.
 
 2. **Data Fetching Methods**:
-   - Implement methods to fetch the list of games and cards using gRPC.
+   - Implement methods to fetch the list of games and cards using WebSocket.
    - Ensure that the methods return the correct data in the expected format.
 
 ### 3. Update the Client Application
-1. **gRPC Client**:
-   - Implement a gRPC client in the `mist-client` to connect to the gRPC server.
-   - Use the `grpc-web` library to implement the gRPC client.
-   - Define methods to fetch game and card data using gRPC.
+1. **WebSocket Client**:
+   - Implement a WebSocket client in the `mist-client` to connect to the WebSocket server.
+   - Use a library like `Socket.IO-client` to implement the WebSocket client.
+   - Define event handlers for receiving game and card data.
 
 2. **Display Games and Cards**:
    - Update the UI to display the list of games and their associated cards.
@@ -71,16 +71,16 @@ This document outlines the next steps for the Mist Card project, focusing on def
    - Use Godot's UI nodes to create a basic display of the game and card data.
 
 ### 5. Test the Implementation
-1. **Test gRPC Server**:
-   - Verify that the gRPC server is running and can handle remote procedure calls.
-   - Test gRPC methods for fetching games and cards using a gRPC client tool.
+1. **Test WebSocket Server**:
+   - Verify that the WebSocket server is running and can handle connections.
+   - Test WebSocket events for fetching games and cards using a WebSocket client tool.
 
 2. **Test HTTP Endpoints**:
    - Verify that the HTTP endpoints are accessible and return the correct data.
    - Test the endpoints using a tool like Postman or `curl`.
 
 3. **Test Client Application**:
-   - Start the `mist-client` and verify that it correctly connects to the gRPC server.
+   - Start the `mist-client` and verify that it correctly connects to the WebSocket server.
    - Verify that it correctly fetches and displays the list of games and cards.
 
 4. **Test Playground Application**:

@@ -111,7 +111,7 @@ These shared dependencies will help maintain consistency, improve code quality, 
 - Ease of implementation and maintenance.
 - Compatibility with the client and server technologies.
 
-**Decision**: Use gRPC for communication between the client and server. gRPC will be used for all interactions, providing a high-performance, language-agnostic framework for remote procedure calls. This will streamline the implementation and reduce complexity. On the server, we will use the `@grpc/grpc-js` module, which is the pure JavaScript implementation of gRPC for Node.js. For the Godot-based playground application, we will use HTTP requests to fetch data from the server, as integrating gRPC with Godot can be complex and may not be straightforward.
+**Decision**: Use WebSocket for communication between the client and server. WebSocket will be used for all interactions, providing a protocol for bidirectional communication that is well-suited for real-time updates and compatible with web clients. This will streamline the implementation and reduce complexity. For the Godot-based playground application, we will use HTTP requests to fetch data from the server, as integrating WebSocket with Godot can be complex and may not be straightforward.
 
 ## Next Steps
 Once these decisions are made, we can proceed with the implementation as outlined in `@nextstep.md`. Each decision will guide the setup and development process, ensuring that the project is built on a solid foundation.
