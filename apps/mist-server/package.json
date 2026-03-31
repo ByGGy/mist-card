@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "tsx index.ts",
+    "start-grpc": "tsx grpc_server.ts",
     "build": "tsc",
     "generate-data": "tsx generate_data.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +16,8 @@
   "license": "ISC",
   "packageManager": "pnpm@10.10.0",
   "dependencies": {
+    "@grpc/grpc-js": "^1.14.3",
+    "@grpc/proto-loader": "^0.8.0",
     "express": "^5.2.1",
     "uuid": "^13.0.0"
   },
