@@ -1,42 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Container, Typography, List, ListItem, ListItemText } from '@mui/material';
-import { connectWebSocket, fetchGames, fetchCards } from './websocket_client';
+import React, { useEffect, useState } from 'react'
+import { Button, Container, Typography, List, ListItem, ListItemText } from '@mui/material'
+import { connectWebSocket, fetchGames, fetchCards } from './websocket_client.ts'
 
-function App() {
-  const [games, setGames] = useState([]);
-  const [selectedGameId, setSelectedGameId] = useState(null);
-  const [cards, setCards] = useState([]);
+type Game = {
+  id: string
+  name: string
+  description: string
+}
+
+type Card = {
+  id: string
+  name: string
+}
+
+export const App = () => {
+  const [games, setGames] = useState<Array<Game>>([])
+  const [selectedGameId, setSelectedGameId] = useState<string | null>(null)
+  const [cards, setCards] = useState<Array<Card>>([])
 
   useEffect(() => {
     const initialize = async () => {
       try {
-        await connectWebSocket();
+        await connectWebSocket()
         // Add a small delay to ensure the connection is fully established
-        await new Promise((resolve) => setTimeout(resolve, 100));
-        const gamesData = await fetchGames();
-        setGames(gamesData);
+        await new Promise((resolve) => setTimeout(resolve, 100))
+        const gamesData = await fetchGames()
+        setGames(gamesData)
       } catch (error) {
-        console.error('Error initializing WebSocket or fetching games:', error);
+        console.error('Error initializing WebSocket or fetching games:', error)
       }
-    };
+    }
 
-    initialize();
-  }, []);
+    initialize()
+  }, [])
 
   useEffect(() => {
     const loadCards = async () => {
       if (selectedGameId) {
         try {
-          const cardsData = await fetchCards(selectedGameId);
-          setCards(cardsData);
+          const cardsData = await fetchCards(selectedGameId)
+          setCards(cardsData)
         } catch (error) {
-          console.error('Error fetching cards:', error);
+          console.error('Error fetching cards:', error)
         }
       }
-    };
+    }
 
-    loadCards();
-  }, [selectedGameId]);
+    loadCards()
+  }, [selectedGameId])
 
   return (
     <Container maxWidth="sm">
@@ -48,7 +59,7 @@ function App() {
       </Typography>
       <List>
         {games.map((game) => (
-          <ListItem key={game.id} button onClick={() => setSelectedGameId(game.id)}>
+          <ListItem key={game.id} onClick={() => setSelectedGameId(game.id)}>
             <ListItemText primary={game.name} secondary={game.description} />
           </ListItem>
         ))}
@@ -68,7 +79,5 @@ function App() {
         </>
       )}
     </Container>
-  );
+  )
 }
-
-export default App;

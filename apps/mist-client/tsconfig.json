@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "node16",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node16",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
