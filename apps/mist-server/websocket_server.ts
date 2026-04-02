@@ -1,14 +1,8 @@
 import { WebSocketServer } from 'ws'
-import { readFileSync } from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
 import cors from 'cors'
 import express from 'express'
 import { createServer } from 'http'
-
-// Get the current module's directory path
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+import { getGames, getCards } from './data_model.ts'
 
 // Create an Express app to handle CORS
 const app = express()
@@ -31,17 +25,16 @@ wss.on('connection', (ws) => {
       console.log(JSON.stringify(data, null, 2))
 
       if (data.type === 'fetchGames') {
-        const gamesData = JSON.parse(readFileSync(path.join(__dirname, 'data', 'games.json'), 'utf-8'))
+        const gamesData = getGames()
         ws.send(JSON.stringify({ id: data.id, type: 'games', data: gamesData }))
       } else if (data.type === 'fetchCards') {
         const gameId = data.gameId
-        const cardsData = JSON.parse(readFileSync(path.join(__dirname, 'data', 'cards.json'), 'utf-8'))
-        const cards = cardsData.filter((card: any) => card.gameId === gameId)
+        const cards = getCards(gameId)
         ws.send(JSON.stringify({ id: data.id, type: 'cards', data: cards }))
       }
     } catch (error) {
       console.error('Error processing message:', error)
-      ws.send(JSON.stringify({ id: data.id, type: 'error', message: 'Invalid message format' }))
+      ws.send(JSON.stringify({ type: 'error', message: 'Invalid message format' }))
     }
   })
 
