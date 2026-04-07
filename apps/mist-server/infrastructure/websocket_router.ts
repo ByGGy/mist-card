@@ -2,7 +2,7 @@
 // Handles routing of WebSocket messages to appropriate use cases
 
 import { WebSocket } from 'ws'
-import { Container } from './dependency_container.ts'
+
 import {
   CreateGameUseCase,
   GetAllGamesUseCase,
@@ -10,6 +10,7 @@ import {
   UpdateGameUseCase,
   DeleteGameUseCase,
   CreateCardUseCase,
+  GetAllCardsUseCase,
   GetCardsByGameIdUseCase,
   GetCardByIdUseCase,
   UpdateCardUseCase,
@@ -24,6 +25,7 @@ export class WebSocketRouter {
     updateGame: new UpdateGameUseCase(),
     deleteGame: new DeleteGameUseCase(),
     createCard: new CreateCardUseCase(),
+    getAllCards: new GetAllCardsUseCase(),
     getCardsByGameId: new GetCardsByGameIdUseCase(),
     getCardById: new GetCardByIdUseCase(),
     updateCard: new UpdateCardUseCase(),
@@ -60,6 +62,9 @@ export class WebSocketRouter {
           break
         case 'createCard':
           await this.handleCreateCard(parsed)
+          break
+        case 'getAllCards':
+          await this.handleGetAllCards(parsed)
           break
         case 'getCardsByGameId':
           await this.handleGetCardsByGameId(parsed)
@@ -157,7 +162,17 @@ export class WebSocketRouter {
       this.sendError(error instanceof Error ? error.message : 'Unknown error', message.requestId)
     }
   }
-  
+
+  private async handleGetAllCards(message: any): Promise<void> {
+    try {
+      const { requestId } = message
+      const cards = await this.useCases.getAllCards.execute()
+      this.sendResponse('cardsList', cards, requestId)
+    } catch (error) {
+      this.sendError(error instanceof Error ? error.message : 'Unknown error', message.requestId)
+    }
+  }
+
   private async handleGetCardsByGameId(message: any): Promise<void> {
     try {
       const { gameId, requestId } = message

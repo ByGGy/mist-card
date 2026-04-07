@@ -141,6 +141,14 @@ export class CreateCardUseCase {
   }
 }
 
+export class GetAllCardsUseCase {
+  private cardRepository = Container.getCardRepository()
+  
+  async execute(): Promise<Card[]> {
+    return this.cardRepository.getAllItems()
+  }
+}
+
 export class GetCardsByGameIdUseCase {
   private cardRepository = Container.getCardRepository()
   

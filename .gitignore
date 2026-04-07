@@ -19,3 +19,6 @@ mono_crash.*.json
 # Web ignores
 node_modules
 dist
+
+# Backend data
+apps/mist-server/data

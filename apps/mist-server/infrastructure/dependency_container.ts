@@ -13,7 +13,7 @@ export class Container {
   static getGameRepository(): LowdbRepository<Game> {
     if (!this.gameRepository) {
       const __dirname = path.dirname(fileURLToPath(import.meta.url))
-      const dataDir = path.join(__dirname, '../../data')
+      const dataDir = path.join(__dirname, '../data')
       this.gameRepository = new LowdbRepository<Game>(path.join(dataDir, 'games.json'))
     }
     return this.gameRepository
@@ -22,7 +22,7 @@ export class Container {
   static getCardRepository(): LowdbRepository<Card> {
     if (!this.cardRepository) {
       const __dirname = path.dirname(fileURLToPath(import.meta.url))
-      const dataDir = path.join(__dirname, '../../data')
+      const dataDir = path.join(__dirname, '../data')
       this.cardRepository = new LowdbRepository<Card>(path.join(dataDir, 'cards.json'))
     }
     return this.cardRepository
