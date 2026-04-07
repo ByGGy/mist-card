@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mist Card | Visual Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@100..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#cabaff",
+                    "on-primary-container": "#004050",
+                    "on-primary-fixed-variant": "#004a5c",
+                    "on-tertiary-fixed-variant": "#6f165a",
+                    "outline": "#747579",
+                    "on-tertiary": "#71175b",
+                    "tertiary-dim": "#f084cc",
+                    "inverse-surface": "#f9f9fd",
+                    "surface-container-high": "#1d2024",
+                    "surface-bright": "#292c31",
+                    "surface-container-low": "#111417",
+                    "surface-container-lowest": "#000000",
+                    "tertiary-container": "#ff91da",
+                    "inverse-primary": "#006880",
+                    "secondary-dim": "#7e51ff",
+                    "on-secondary": "#25006b",
+                    "on-tertiary-fixed": "#3f0032",
+                    "inverse-on-surface": "#535559",
+                    "secondary": "#a68cff",
+                    "on-secondary-fixed": "#3b00a0",
+                    "error-container": "#a70138",
+                    "surface-variant": "#23262a",
+                    "surface-tint": "#69daff",
+                    "on-primary-fixed": "#002a35",
+                    "secondary-container": "#591adc",
+                    "on-error-container": "#ffb2b9",
+                    "surface-dim": "#0c0e11",
+                    "on-background": "#f9f9fd",
+                    "on-tertiary-container": "#640951",
+                    "on-surface": "#f9f9fd",
+                    "surface": "#0c0e11",
+                    "background": "#0c0e11",
+                    "surface-container": "#171a1d",
+                    "primary": "#69daff",
+                    "primary-container": "#00cffc",
+                    "primary-fixed": "#00cffc",
+                    "error-dim": "#d73357",
+                    "on-secondary-container": "#e4daff",
+                    "tertiary": "#ffa9df",
+                    "primary-dim": "#00c0ea",
+                    "outline-variant": "#46484b",
+                    "tertiary-fixed-dim": "#f084cc",
+                    "tertiary-fixed": "#ff91da",
+                    "on-error": "#490013",
+                    "on-secondary-fixed-variant": "#591bdc",
+                    "primary-fixed-dim": "#00c0ea",
+                    "on-primary": "#004a5d",
+                    "on-surface-variant": "#aaabaf",
+                    "surface-container-highest": "#23262a",
+                    "secondary-fixed": "#d8caff",
+                    "error": "#ff6e84"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .font-label { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel {
+            background: rgba(35, 38, 42, 0.6);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface flex h-screen overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#111417] dark:bg-[#111417] shadow-2xl w-64 border-r-0">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-1">
+<span class="text-lg font-bold text-[#69daff] font-headline">Core Set 2024</span>
+</div>
+<p class="text-xs font-label text-slate-500 tracking-widest uppercase">v1.0.4-alpha</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+<span class="font-label uppercase text-[0.6875rem] tracking-[0.1em] font-bold">Projects</span>
+</a>
+<a class="flex items-center gap-3 text-[#69daff] bg-[#171a1d] rounded-r-full py-3 px-4 border-l-4 border-[#69daff] translate-x-1 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="style" style="font-variation-settings: 'FILL' 1;">style</span>
+<span class="font-label uppercase text-[0.6875rem] tracking-[0.1em] font-bold">Assets</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+<span class="font-label uppercase text-[0.6875rem] tracking-[0.1em] font-bold">Mechanics</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-label uppercase text-[0.6875rem] tracking-[0.1em] font-bold">Variables</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label uppercase text-[0.6875rem] tracking-[0.1em] font-bold">History</span>
+</a>
+</nav>
+<div class="px-6 mb-8">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="font-label uppercase text-[0.6875rem] tracking-[0.1em]">New Object</span>
+</button>
+</div>
+<div class="p-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 text-slate-500 py-2 px-4 hover:text-slate-200" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+<span class="font-label text-[0.6875rem] tracking-[0.1em] uppercase">Documentation</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-2 px-4 hover:text-slate-200" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+<span class="font-label text-[0.6875rem] tracking-[0.1em] uppercase">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-64 flex-1 flex flex-col h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="flex justify-between items-center w-full px-6 py-3 bg-[#111417] z-30">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#69daff] font-headline">Mist Card</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[#69daff] border-b-2 border-[#69daff] pb-1 font-bold font-body transition-all" href="#">Editor</a>
+<a class="text-slate-400 font-medium font-body hover:text-[#69daff] transition-colors duration-200" href="#">Collections</a>
+<a class="text-slate-400 font-medium font-body hover:text-[#69daff] transition-colors duration-200" href="#">Playtest</a>
+<a class="text-slate-400 font-medium font-body hover:text-[#69daff] transition-colors duration-200" href="#">Market</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="bg-surface-container hover:bg-surface-container-high text-on-surface px-4 py-2 rounded-lg font-body text-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="ios_share">ios_share</span>
+                        Export
+                    </button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-body text-sm font-bold transition-all active:scale-95">
+                        Deploy
+                    </button>
+</div>
+<div class="flex gap-3 text-slate-400 border-l border-outline-variant/20 pl-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="settings">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Editor View -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left Side: Form Editor -->
+<section class="w-1/2 overflow-y-auto bg-surface p-8 scrollbar-hide border-r-0">
+<div class="mb-8">
+<h1 class="font-headline text-4xl font-bold text-on-surface tracking-tight mb-2">Editor</h1>
+<p class="font-label text-on-surface-variant text-xs uppercase tracking-widest">Designing: Spectral Harbinger</p>
+</div>
+<div class="space-y-10">
+<!-- Basic Stats Section -->
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-8 flex flex-col gap-2">
+<label class="font-label text-[0.6875rem] font-extrabold text-primary tracking-widest uppercase">Entity Name</label>
+<input class="bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary rounded-lg text-lg font-body px-4 py-3 placeholder-outline-variant" type="text" value="Spectral Harbinger"/>
+</div>
+<div class="col-span-4 flex flex-col gap-2">
+<label class="font-label text-[0.6875rem] font-extrabold text-primary tracking-widest uppercase">Essence Cost</label>
+<input class="bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary rounded-lg text-lg font-body px-4 py-3" type="number" value="7"/>
+</div>
+</div>
+<!-- Type & Rarity -->
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label text-[0.6875rem] font-extrabold text-on-surface-variant tracking-widest uppercase">Archetype</label>
+<select class="bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary rounded-lg font-body text-sm px-4 py-3 appearance-none">
+<option>Creature - Spirit Warrior</option>
+<option>Spell - Evocation</option>
+<option>Artifact - Relic</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-[0.6875rem] font-extrabold text-on-surface-variant tracking-widest uppercase">Rarity Tier</label>
+<div class="flex gap-2">
+<span class="bg-tertiary-container/20 text-tertiary px-3 py-1 rounded-full text-xs font-label font-bold border border-tertiary/20">Mythic</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-sm" data-icon="edit">edit</span></button>
+</div>
+</div>
+</div>
+<!-- Power / Health -->
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label text-[0.6875rem] font-extrabold text-on-surface-variant tracking-widest uppercase">Power</label>
+<div class="flex items-center gap-4 bg-surface-container-lowest rounded-lg p-1">
+<button class="p-2 hover:bg-surface-container rounded-md"><span class="material-symbols-outlined text-sm" data-icon="remove">remove</span></button>
+<span class="flex-1 text-center font-headline text-xl font-bold">5</span>
+<button class="p-2 hover:bg-surface-container rounded-md"><span class="material-symbols-outlined text-sm" data-icon="add">add</span></button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-[0.6875rem] font-extrabold text-on-surface-variant tracking-widest uppercase">Vitality</label>
+<div class="flex items-center gap-4 bg-surface-container-lowest rounded-lg p-1">
+<button class="p-2 hover:bg-surface-container rounded-md"><span class="material-symbols-outlined text-sm" data-icon="remove">remove</span></button>
+<span class="flex-1 text-center font-headline text-xl font-bold">4</span>
+<button class="p-2 hover:bg-surface-container rounded-md"><span class="material-symbols-outlined text-sm" data-icon="add">add</span></button>
+</div>
+</div>
+</div>
+<!-- Keywords -->
+<div class="flex flex-col gap-2">
+<label class="font-label text-[0.6875rem] font-extrabold text-on-surface-variant tracking-widest uppercase">Keywords</label>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary/10 text-secondary border border-secondary/20 px-4 py-1.5 rounded-full text-xs font-label uppercase tracking-wider">Flying</span>
+<span class="bg-secondary/10 text-secondary border border-secondary/20 px-4 py-1.5 rounded-full text-xs font-label uppercase tracking-wider">Deathrattle</span>
+<button class="bg-surface-container-lowest text-on-surface-variant px-4 py-1.5 rounded-full text-xs font-label uppercase tracking-wider border border-outline-variant/10 hover:bg-surface-container transition-all">+ Add Tag</button>
+</div>
+</div>
+<!-- Text Box -->
+<div class="flex flex-col gap-2">
+<label class="font-label text-[0.6875rem] font-extrabold text-on-surface-variant tracking-widest uppercase">Ability Description</label>
+<textarea class="bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary rounded-lg text-sm font-body px-4 py-3 leading-relaxed" rows="4">When Spectral Harbinger enters the field, look at the top 3 cards of your deck. You may manifest one and exile the others.</textarea>
+</div>
+<!-- Assets -->
+<div class="flex flex-col gap-4">
+<label class="font-label text-[0.6875rem] font-extrabold text-on-surface-variant tracking-widest uppercase">Visual Identity</label>
+<div class="grid grid-cols-2 gap-4">
+<div class="group relative aspect-video bg-surface-container-lowest rounded-xl overflow-hidden cursor-pointer">
+<img alt="Ethereal ghost warrior in blue flames holding a translucent sword" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500" data-alt="Dark fantasy illustration of an ethereal spirit warrior wreathed in blue spectral flames holding a crystalline translucent greatsword" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS7VIolhYBHvvqV1QqaRGUz_GL7_Z7SDxmVh54hwBrb10eGnSjqQBSTk6P6EKa9iA7p8nQdwXAvHs-aS3IXOBQ7isu9mW2t6B50jDqb__4T8DL6xr3qQMbI8DCHYT2GYtkEp-1JFJUEwjcMIHwH7Vq37fp-ei_jhWTIrcXBsp6TEoHi2slrODVbkJf25nSpaxjt-1hoaF8LD_2nCL3bH9rbrQb2ZUnpOr6SU74iiGN3DbQEyqaou5jzSBy83axgawQ-69mKWjwaug"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-xs font-label font-bold uppercase tracking-widest text-white">Swap Art</span>
+</div>
+</div>
+<div class="flex flex-col justify-center gap-3">
+<button class="flex items-center gap-3 px-4 py-2 bg-surface-container hover:bg-surface-container-high rounded-lg text-xs font-label uppercase tracking-widest text-on-surface-variant transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="frame_inspect">frame_inspect</span>
+                                    Edit Card Frame
+                                </button>
+<button class="flex items-center gap-3 px-4 py-2 bg-surface-container hover:bg-surface-container-high rounded-lg text-xs font-label uppercase tracking-widest text-on-surface-variant transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="palette">palette</span>
+                                    Color Profile
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom: Mechanics Section -->
+<section class="mt-16 pt-12 border-t border-outline-variant/10">
+<div class="flex justify-between items-center mb-6">
+<div class="flex flex-col">
+<h2 class="font-headline text-2xl font-bold">Logic Engine</h2>
+<p class="font-label text-[0.6875rem] text-on-surface-variant uppercase tracking-widest">Custom Scripts &amp; Modifiers</p>
+</div>
+<button class="bg-secondary-dim text-white px-5 py-2 rounded-full font-label text-[0.6875rem] font-bold uppercase tracking-widest hover:opacity-90 active:translate-y-px transition-all">
+                            Add Mechanic
+                        </button>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low p-5 rounded-xl flex items-start justify-between group">
+<div class="flex gap-4">
+<span class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</span>
+<div>
+<h4 class="font-body font-bold text-sm">OnPlay_Manifest</h4>
+<p class="text-xs text-on-surface-variant mt-1">Triggers top-deck manifest logic. Sequence priority: 1.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-on-surface" data-icon="settings">settings</span>
+<span class="material-symbols-outlined text-error cursor-pointer hover:text-error-dim" data-icon="delete">delete</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex items-start justify-between group">
+<div class="flex gap-4">
+<span class="w-10 h-10 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="skull" style="font-variation-settings: 'FILL' 1;">skull</span>
+</span>
+<div>
+<h4 class="font-body font-bold text-sm">OnDeath_Shuffle</h4>
+<p class="text-xs text-on-surface-variant mt-1">Shuffles back to deck on elimination.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-on-surface" data-icon="settings">settings</span>
+<span class="material-symbols-outlined text-error cursor-pointer hover:text-error-dim" data-icon="delete">delete</span>
+</div>
+</div>
+</div>
+</section>
+</section>
+<!-- Right Side: High Fidelity Preview -->
+<section class="w-1/2 bg-surface-container-low flex flex-col items-center justify-center relative">
+<!-- Floating Toolbar -->
+<div class="absolute top-8 left-1/2 -translate-x-1/2 flex items-center gap-2 p-1.5 bg-surface-container-highest/80 backdrop-blur-xl rounded-xl shadow-2xl border border-outline-variant/10 z-20">
+<button class="p-2 hover:bg-surface-container rounded-lg group transition-all" title="Save">
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="save">save</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg group transition-all" title="Duplicate">
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="content_copy">content_copy</span>
+</button>
+<div class="w-px h-6 bg-outline-variant/30 mx-1"></div>
+<button class="p-2 hover:bg-surface-container rounded-lg group transition-all" title="Export Image">
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors" data-icon="download">download</span>
+</button>
+<button class="flex items-center gap-2 pl-3 pr-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="text-xs font-label font-bold uppercase tracking-wider">Playtest</span>
+</button>
+</div>
+<!-- Card Preview Canvas -->
+<div class="relative w-[380px] h-[530px] group">
+<!-- The Glow -->
+<div class="absolute -inset-4 bg-primary/20 blur-[60px] rounded-full opacity-50 group-hover:bg-secondary/20 transition-colors duration-700"></div>
+<!-- Card Frame -->
+<div class="relative w-full h-full bg-[#171a1d] rounded-[32px] overflow-hidden border border-outline-variant/30 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] flex flex-col p-4">
+<!-- Card Art -->
+<div class="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden mb-3">
+<img alt="Spectral Harbinger card illustration" class="w-full h-full object-cover" data-alt="High detail fantasy trading card art of a glowing spectral knight standing in a misty graveyard with cyan magical energy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJdO67a8gPeR_2TBzfwjGKK2JoGezEo_SfDiY-dxrkFiDV1zqF65059pR_NTFbUANX5n-2txT5eIcE3K1XMvvGAQE9K56Jb3JgN8K9U8r3ElDpXgj51o8sFwSVkkdODAqoHEYMAe0n_o_Rm5hCTNsQF9Wyhc7vzvtmSoQfbmAyKCOBYcW7nC4DezLjak156QLS_f5Nx9ZJNO3The_Mmlt2XYcWlXYRqTk0KOGYR-ob4cjqxoKR9VPWbPfGwBvKNGLk1Yd9sD43TCU"/>
+<div class="absolute top-3 right-3 w-10 h-10 bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center border border-primary/40">
+<span class="font-headline text-lg font-bold text-primary">7</span>
+</div>
+</div>
+<!-- Card Info -->
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-center mb-1">
+<h3 class="font-headline text-xl font-bold text-on-surface">Spectral Harbinger</h3>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="text-[0.6rem] font-label font-bold text-tertiary uppercase tracking-widest">Creature — Spirit Warrior</span>
+</div>
+<!-- Ability Text Area -->
+<div class="flex-1 bg-surface-container-highest/30 rounded-xl p-4 mb-4 backdrop-blur-sm border border-outline-variant/10">
+<div class="flex gap-2 mb-2">
+<span class="text-[0.65rem] font-label font-black text-secondary tracking-tighter uppercase italic">Flying, Deathrattle</span>
+</div>
+<p class="text-[0.8rem] font-body leading-snug text-on-surface/90">
+                                    When Spectral Harbinger enters the field, look at the top 3 cards of your deck. You may manifest one and exile the others.
+                                </p>
+</div>
+<!-- Bottom Bar -->
+<div class="flex justify-between items-center">
+<span class="text-[0.6rem] font-label text-on-surface-variant italic">#142/250 - R. Artist</span>
+<div class="flex gap-2">
+<div class="w-12 h-10 bg-primary/20 border border-primary/40 rounded-lg flex items-center justify-center">
+<span class="font-headline font-bold text-primary">5</span>
+</div>
+<div class="w-12 h-10 bg-secondary/20 border border-secondary/40 rounded-lg flex items-center justify-center">
+<span class="font-headline font-bold text-secondary">4</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Canvas Info -->
+<div class="absolute bottom-8 text-on-surface-variant font-label text-[0.6875rem] uppercase tracking-[0.2em] opacity-40">
+                    Live Engine Preview • 120 FPS
+                </div>
+</section>
+</div>
+</main>
+</body></html>

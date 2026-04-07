@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mist Card | Core Set 2024</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@100..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#cabaff",
+                        "on-primary-container": "#004050",
+                        "on-primary-fixed-variant": "#004a5c",
+                        "on-tertiary-fixed-variant": "#6f165a",
+                        "outline": "#747579",
+                        "on-tertiary": "#71175b",
+                        "tertiary-dim": "#f084cc",
+                        "inverse-surface": "#f9f9fd",
+                        "surface-container-high": "#1d2024",
+                        "surface-bright": "#292c31",
+                        "surface-container-low": "#111417",
+                        "surface-container-lowest": "#000000",
+                        "tertiary-container": "#ff91da",
+                        "inverse-primary": "#006880",
+                        "secondary-dim": "#7e51ff",
+                        "on-secondary": "#25006b",
+                        "on-tertiary-fixed": "#3f0032",
+                        "inverse-on-surface": "#535559",
+                        "secondary": "#a68cff",
+                        "on-secondary-fixed": "#3b00a0",
+                        "error-container": "#a70138",
+                        "surface-variant": "#23262a",
+                        "surface-tint": "#69daff",
+                        "on-primary-fixed": "#002a35",
+                        "secondary-container": "#591adc",
+                        "on-error-container": "#ffb2b9",
+                        "surface-dim": "#0c0e11",
+                        "on-background": "#f9f9fd",
+                        "on-tertiary-container": "#640951",
+                        "on-surface": "#f9f9fd",
+                        "surface": "#0c0e11",
+                        "background": "#0c0e11",
+                        "surface-container": "#171a1d",
+                        "primary": "#69daff",
+                        "primary-container": "#00cffc",
+                        "primary-fixed": "#00cffc",
+                        "error-dim": "#d73357",
+                        "on-secondary-container": "#e4daff",
+                        "tertiary": "#ffa9df",
+                        "primary-dim": "#00c0ea",
+                        "outline-variant": "#46484b",
+                        "tertiary-fixed-dim": "#f084cc",
+                        "tertiary-fixed": "#ff91da",
+                        "on-error": "#490013",
+                        "on-secondary-fixed-variant": "#591bdc",
+                        "primary-fixed-dim": "#00c0ea",
+                        "on-primary": "#004a5d",
+                        "on-surface-variant": "#aaabaf",
+                        "surface-container-highest": "#23262a",
+                        "secondary-fixed": "#d8caff",
+                        "error": "#ff6e84"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #0c0e11; color: #f9f9fd; font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(35, 38, 42, 0.6); backdrop-filter: blur(24px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="flex overflow-hidden h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#111417] dark:bg-[#111417] shadow-2xl w-64" style="font-family: 'Inter', sans-serif;">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<img alt="Project Logo" data-alt="Abstract geometric logo with cyan neon lines and dark metallic textures, tech aesthetics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADKi11XvWLZwoo-0pJEL0DX9Y2_nAgOfgLMFZ7uBDtyEISqNuG6EjlPWvnX66R6NkCggwmp3DLMT7vbH8lTzcnzAkY2ARXsnCBQcEgGXj6rsEKD1i9gaxxomS6f_OQEsiNwxjFQf66ipGnXbSAxFPkm-OVUqTU0btmbZk-CU2w3WL3jDDTOCJCCLzG8zc5cdiU_bjXjZ5VE0Z58tDbloMcxOLjqEt82_zXnVAIqUht0eNhG6cAfMKQSu-6BQCD-4ntMrcfUvYpfd4"/>
+</div>
+<div>
+<h2 class="text-lg font-bold text-[#69daff] font-headline tracking-tighter">Core Set 2024</h2>
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">v1.0.4-alpha</p>
+</div>
+</div>
+<div class="px-4 py-2">
+<button class="w-full py-3 px-4 bg-secondary-container hover:bg-secondary-dim text-white rounded-lg flex items-center justify-center gap-2 transition-all font-label text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Object
+            </button>
+</div>
+<nav class="mt-6 flex-grow">
+<ul class="space-y-1">
+<!-- Active: Projects (Matches "Card Sets" or main context) -->
+<li>
+<a class="flex items-center gap-3 text-[#69daff] bg-[#171a1d] rounded-r-full py-3 px-4 border-l-4 border-[#69daff] translate-x-1 font-label text-xs uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+                        Projects
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all font-label text-xs uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="style">style</span>
+                        Assets
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all font-label text-xs uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+                        Mechanics
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all font-label text-xs uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+                        Variables
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all font-label text-xs uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                        History
+                    </a>
+</li>
+</ul>
+</nav>
+<div class="mt-auto p-4 space-y-1 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 text-slate-500 py-2 px-4 hover:text-slate-200 font-label text-xs uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+                Documentation
+            </a>
+<a class="flex items-center gap-3 text-slate-500 py-2 px-4 hover:text-slate-200 font-label text-xs uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Stage -->
+<main class="flex-grow ml-64 flex flex-col bg-[#0c0e11] min-h-screen">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-6 py-3 bg-[#111417] sticky top-0 z-30">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#69daff] font-headline">Mist Card</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[#69daff] border-b-2 border-[#69daff] pb-1 font-bold font-body text-sm" href="#">Editor</a>
+<a class="text-slate-400 font-medium hover:text-[#69daff] transition-colors duration-200 font-body text-sm" href="#">Collections</a>
+<a class="text-slate-400 font-medium hover:text-[#69daff] transition-colors duration-200 font-body text-sm" href="#">Playtest</a>
+<a class="text-slate-400 font-medium hover:text-[#69daff] transition-colors duration-200 font-body text-sm" href="#">Market</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 mr-4">
+<button class="p-2 text-slate-400 hover:text-[#69daff] transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-[#69daff] transition-all relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-slate-400 hover:text-[#69daff] transition-all">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+<button class="px-4 py-1.5 bg-surface-variant hover:bg-surface-container-high text-on-surface rounded font-label text-xs font-bold uppercase tracking-widest transition-all">Export</button>
+<button class="px-6 py-1.5 bg-primary hover:bg-primary-container text-on-primary font-bold font-headline rounded scale-100 hover:scale-105 active:scale-95 transition-all">Deploy</button>
+</div>
+</header>
+<!-- Editor Workspace Canvas -->
+<div class="p-8 overflow-y-auto no-scrollbar">
+<!-- Header Section with Stats (Editorial Style) -->
+<div class="flex justify-between items-end mb-12">
+<div>
+<p class="font-label text-xs uppercase tracking-[0.2em] text-primary mb-1">Project Workspace</p>
+<h1 class="font-headline text-5xl font-bold tracking-tighter text-on-surface">Kinetic Alchemy</h1>
+</div>
+<div class="flex gap-12">
+<div class="text-right">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Total Cards</p>
+<p class="font-headline text-3xl font-light text-on-surface">1,248</p>
+</div>
+<div class="text-right">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Unique Keywords</p>
+<p class="font-headline text-3xl font-light text-on-surface">42</p>
+</div>
+<div class="text-right">
+<p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Sync Status</p>
+<p class="font-headline text-3xl font-light text-[#00ff9d]">Live</p>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Global Settings Editor (Left Main) -->
+<section class="col-span-12 lg:col-span-8 space-y-6">
+<div class="bg-surface-container-low rounded-xl p-8 border-l-2 border-primary/20">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline text-xl font-bold tracking-tight">Global Game Settings</h3>
+<span class="bg-tertiary-container/20 text-tertiary px-3 py-1 rounded-full font-label text-[10px] font-bold uppercase tracking-widest">System Core</span>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<div>
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Resource System</label>
+<div class="relative group">
+<select class="w-full bg-surface-container-lowest border-none rounded-lg text-on-surface py-3 px-4 font-body text-sm focus:ring-1 focus:ring-primary appearance-none">
+<option>Mana-based (Incremental)</option>
+<option>Action Point Economy</option>
+<option>Sacrificial Offering</option>
+<option>Dynamic Flow</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-slate-500">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Standard Card Back</label>
+<div class="h-40 bg-surface-container-lowest rounded-lg overflow-hidden flex items-center justify-center border-2 border-dashed border-outline-variant/30 hover:border-primary/50 transition-colors cursor-pointer group">
+<img alt="Standard Card Back" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Sleek trading card back design with deep purple and cyan cybernetic patterns and central orb" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc9NQ5QbtzZZnB84uTktI70ghVJ4FnW6EbnZB9-aqDRwFeX4IAnyoV1IpF3x1fuha-pQ6XV3pB6xecbHOK-eQXQ3a73_S7Z4vEEOMpSdNcoYkyv-0poRMalV8fNVEyPT5sw3Ysk0EipGASfKn47_1eyBH0wcNwyRMk9tqdU6pxlvDg8QRZemG5ov6_ZeYRaKOci3jlC7N0e58fxeMhxtzAUaNIRxdO1qLEzDvVrD7pAtxfxM8Qgr2NCiGtyxStKbCz2HEDTFzrNUI"/>
+<div class="absolute flex flex-col items-center">
+<span class="material-symbols-outlined text-primary mb-2">upload_file</span>
+<span class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Change Texture</span>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Turn Structure</label>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg">
+<span class="text-xs font-body">Untap &amp; Draw Phase</span>
+<input checked="" class="form-checkbox bg-surface text-primary rounded border-outline-variant" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg">
+<span class="text-xs font-body">Pre-Combat Main</span>
+<input checked="" class="form-checkbox bg-surface text-primary rounded border-outline-variant" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg">
+<span class="text-xs font-body">Reactive Response Window</span>
+<input class="form-checkbox bg-surface text-primary rounded border-outline-variant" type="checkbox"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Hand Size Limit</label>
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" max="10" min="3" type="range" value="7"/>
+<div class="flex justify-between mt-2 font-label text-[10px] text-on-surface-variant">
+<span>3 Cards</span>
+<span class="text-primary font-bold">7 Cards</span>
+<span>10 Cards</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Sets Section (The "Ledger") -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden">
+<div class="px-8 py-6 flex justify-between items-center border-b border-outline-variant/10">
+<h3 class="font-headline text-xl font-bold tracking-tight">Active Card Sets</h3>
+<button class="flex items-center gap-2 text-primary font-label text-[10px] font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">add_circle</span> View Archive
+                            </button>
+</div>
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant/5">
+<th class="py-4 px-8 font-label text-[10px] uppercase tracking-widest text-primary">Set Name</th>
+<th class="py-4 px-8 font-label text-[10px] uppercase tracking-widest text-primary">Release Date</th>
+<th class="py-4 px-8 font-label text-[10px] uppercase tracking-widest text-primary">Card Count</th>
+<th class="py-4 px-8 font-label text-[10px] uppercase tracking-widest text-primary text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="py-4 px-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-secondary-container flex items-center justify-center text-[10px] font-bold">CS</div>
+<span class="font-body text-sm font-semibold">Core Genesis</span>
+</div>
+</td>
+<td class="py-4 px-8 font-label text-xs text-on-surface-variant">Oct 24, 2023</td>
+<td class="py-4 px-8 font-label text-xs text-on-surface-variant">450 / 450</td>
+<td class="py-4 px-8 text-right">
+<span class="text-[10px] font-label font-bold uppercase tracking-widest bg-primary/10 text-primary px-3 py-1 rounded">Released</span>
+</td>
+</tr>
+<tr class="bg-surface-container/30 hover:bg-surface-container transition-colors group">
+<td class="py-4 px-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-tertiary-container/30 flex items-center justify-center text-[10px] font-bold">NV</div>
+<span class="font-body text-sm font-semibold text-tertiary">Neon Void</span>
+</div>
+</td>
+<td class="py-4 px-8 font-label text-xs text-on-surface-variant">Jan 12, 2024</td>
+<td class="py-4 px-8 font-label text-xs text-on-surface-variant">128 / 220</td>
+<td class="py-4 px-8 text-right">
+<span class="text-[10px] font-label font-bold uppercase tracking-widest bg-tertiary/10 text-tertiary px-3 py-1 rounded">Drafting</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="py-4 px-8">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">PL</div>
+<span class="font-body text-sm font-semibold">Playtest Overflow</span>
+</div>
+</td>
+<td class="py-4 px-8 font-label text-xs text-on-surface-variant">N/A</td>
+<td class="py-4 px-8 font-label text-xs text-on-surface-variant">32 / --</td>
+<td class="py-4 px-8 text-right">
+<span class="text-[10px] font-label font-bold uppercase tracking-widest bg-outline/10 text-on-surface-variant px-3 py-1 rounded">Sandbox</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Sidebar Activity/Actions (Right) -->
+<aside class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Component Shape: Docked Section -->
+<div class="glass-panel rounded-xl p-6 border-t-2 border-secondary">
+<h4 class="font-headline text-lg font-bold mb-6">Quick Actions</h4>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface-container hover:bg-primary transition-all group rounded-lg">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary">play_circle</span>
+<span class="font-label text-[9px] uppercase tracking-widest group-hover:text-on-primary font-bold">Run Build</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface-container hover:bg-secondary transition-all group rounded-lg">
+<span class="material-symbols-outlined text-secondary group-hover:text-on-secondary">science</span>
+<span class="font-label text-[9px] uppercase tracking-widest group-hover:text-on-secondary font-bold">Simulate</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface-container hover:bg-tertiary transition-all group rounded-lg">
+<span class="material-symbols-outlined text-tertiary group-hover:text-on-tertiary">auto_stories</span>
+<span class="font-label text-[9px] uppercase tracking-widest group-hover:text-on-tertiary font-bold">PDF Export</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface-container hover:bg-primary-container transition-all group rounded-lg">
+<span class="material-symbols-outlined text-primary-container group-hover:text-on-primary-container">cloud_upload</span>
+<span class="font-label text-[9px] uppercase tracking-widest group-hover:text-on-primary-container font-bold">Snapshot</span>
+</button>
+</div>
+</div>
+<!-- History / Recent Activity -->
+<div class="bg-surface-container-low rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline text-lg font-bold">Revision History</h4>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer">filter_list</span>
+</div>
+<div class="space-y-4 relative">
+<!-- Timeline Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-px bg-outline-variant/30"></div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-[#111417] flex items-center justify-center border-2 border-primary">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<p class="text-xs font-body font-bold text-on-surface">Updated 'Life Drain' Mechanic</p>
+<p class="text-[10px] font-label text-on-surface-variant">Just now • Alex M.</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-[#111417] flex items-center justify-center border-2 border-slate-700">
+<div class="w-2 h-2 rounded-full bg-slate-700"></div>
+</div>
+<p class="text-xs font-body font-bold text-on-surface">Bulk Import: Neon Void (Set B)</p>
+<p class="text-[10px] font-label text-on-surface-variant">2 hours ago • Automated</p>
+</div>
+<div class="relative pl-8 opacity-60">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-[#111417] flex items-center justify-center border-2 border-slate-800">
+<div class="w-2 h-2 rounded-full bg-slate-800"></div>
+</div>
+<p class="text-xs font-body font-bold text-on-surface">Changed Global Hand Size to 7</p>
+<p class="text-[10px] font-label text-on-surface-variant">Yesterday • System</p>
+</div>
+</div>
+<button class="w-full mt-6 py-2 border border-outline-variant/20 rounded-lg font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:bg-surface-container-high transition-colors">View All Changes</button>
+</div>
+<!-- Mechanic Highlight Tag Cloud -->
+<div class="bg-surface-container-low rounded-xl p-6">
+<h4 class="font-headline text-lg font-bold mb-4">Top Mechanic Tags</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-tertiary-container/10 text-tertiary rounded-full font-label text-[10px] font-bold uppercase tracking-widest border border-tertiary-container/20">Battlecry</span>
+<span class="px-3 py-1 bg-tertiary-container/10 text-tertiary rounded-full font-label text-[10px] font-bold uppercase tracking-widest border border-tertiary-container/20">Deathrattle</span>
+<span class="px-3 py-1 bg-tertiary-container/10 text-tertiary rounded-full font-label text-[10px] font-bold uppercase tracking-widest border border-tertiary-container/20">Ethereal</span>
+<span class="px-3 py-1 bg-tertiary-container/10 text-tertiary rounded-full font-label text-[10px] font-bold uppercase tracking-widest border border-tertiary-container/20">Taint</span>
+<span class="px-3 py-1 bg-tertiary-container/10 text-tertiary rounded-full font-label text-[10px] font-bold uppercase tracking-widest border border-tertiary-container/20">Phase</span>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mist Card | Project Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#cabaff",
+                        "on-primary-container": "#004050",
+                        "on-primary-fixed-variant": "#004a5c",
+                        "on-tertiary-fixed-variant": "#6f165a",
+                        "outline": "#747579",
+                        "on-tertiary": "#71175b",
+                        "tertiary-dim": "#f084cc",
+                        "inverse-surface": "#f9f9fd",
+                        "surface-container-high": "#1d2024",
+                        "surface-bright": "#292c31",
+                        "surface-container-low": "#111417",
+                        "surface-container-lowest": "#000000",
+                        "tertiary-container": "#ff91da",
+                        "inverse-primary": "#006880",
+                        "secondary-dim": "#7e51ff",
+                        "on-secondary": "#25006b",
+                        "on-tertiary-fixed": "#3f0032",
+                        "inverse-on-surface": "#535559",
+                        "secondary": "#a68cff",
+                        "on-secondary-fixed": "#3b00a0",
+                        "error-container": "#a70138",
+                        "surface-variant": "#23262a",
+                        "surface-tint": "#69daff",
+                        "on-primary-fixed": "#002a35",
+                        "secondary-container": "#591adc",
+                        "on-error-container": "#ffb2b9",
+                        "surface-dim": "#0c0e11",
+                        "on-background": "#f9f9fd",
+                        "on-tertiary-container": "#640951",
+                        "on-surface": "#f9f9fd",
+                        "surface": "#0c0e11",
+                        "background": "#0c0e11",
+                        "surface-container": "#171a1d",
+                        "primary": "#69daff",
+                        "primary-container": "#00cffc",
+                        "primary-fixed": "#00cffc",
+                        "error-dim": "#d73357",
+                        "on-secondary-container": "#e4daff",
+                        "tertiary": "#ffa9df",
+                        "primary-dim": "#00c0ea",
+                        "outline-variant": "#46484b",
+                        "tertiary-fixed-dim": "#f084cc",
+                        "tertiary-fixed": "#ff91da",
+                        "on-error": "#490013",
+                        "on-secondary-fixed-variant": "#591bdc",
+                        "primary-fixed-dim": "#00c0ea",
+                        "on-primary": "#004a5d",
+                        "on-surface-variant": "#aaabaf",
+                        "surface-container-highest": "#23262a",
+                        "secondary-fixed": "#d8caff",
+                        "error": "#ff6e84"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0c0e11; color: #f9f9fd; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .font-label { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(35, 38, 42, 0.6); backdrop-filter: blur(24px); }
+        .blueprint-grid { background-image: radial-gradient(rgba(105, 218, 255, 0.05) 1px, transparent 1px); background-size: 32px 32px; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0c0e11; }
+        ::-webkit-scrollbar-thumb { background: #23262a; border-radius: 10px; }
+    </style>
+</head>
+<body class="overflow-hidden h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-6 py-3 bg-[#111417] z-50 fixed top-0">
+<div class="flex items-center gap-8">
+<div class="text-xl font-bold tracking-tighter text-[#69daff] font-headline">Mist Card</div>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-400 font-medium hover:text-[#69daff] transition-colors duration-200 font-body text-sm uppercase tracking-wider" href="#">Editor</a>
+<a class="text-[#69daff] border-b-2 border-[#69daff] pb-1 font-bold font-body text-sm uppercase tracking-wider" href="#">Collections</a>
+<a class="text-slate-400 font-medium hover:text-[#69daff] transition-colors duration-200 font-body text-sm uppercase tracking-wider" href="#">Playtest</a>
+<a class="text-slate-400 font-medium hover:text-[#69daff] transition-colors duration-200 font-body text-sm uppercase tracking-wider" href="#">Market</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2 mr-4">
+<button class="p-2 text-slate-400 hover:text-[#69daff] transition-all"><span class="material-symbols-outlined">settings</span></button>
+<button class="p-2 text-slate-400 hover:text-[#69daff] transition-all"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 text-slate-400 hover:text-[#69daff] transition-all"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+<button class="px-4 py-1.5 bg-surface-variant border border-outline-variant/20 rounded-lg text-sm font-medium hover:bg-surface-container-highest transition-all">Export</button>
+<button class="px-4 py-1.5 bg-primary text-on-primary rounded-lg text-sm font-bold hover:opacity-90 transition-all active:scale-95">Deploy</button>
+</div>
+</header>
+<div class="flex flex-1 pt-[56px]">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#111417] w-64 pt-[56px] shadow-2xl">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Stylized geometric emblem of a digital dragon in neon cyan and deep charcoal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOmxY0H6LLULzedizKXhZ70HBEH9oEf9VL2oJGGQB_W9VLvRXr7HI31Hk60k5NtilFbIkVm6-IL5pPYb4eGlaGmDFYfr3EZp78A1HrGf40imdeyJ7qYDG4qmCva6FgW3oRjE4E9zYvMhFQs4z_fkfgfNjZeAdnS4zWEJatSLnzjyAF0a4WzT-2A7O_akxm51ychiPfwMJkv6Sv9DBTQSt-7Q_nYj8EZ5yB-lWENigJ7E4DCjRcieYL4zfhvEb1A4YMD-9GQZgGKBI"/>
+</div>
+<div>
+<div class="text-lg font-bold text-[#69daff] font-headline leading-tight">Core Set 2024</div>
+<div class="text-[10px] font-label uppercase tracking-widest text-slate-500">v1.0.4-alpha</div>
+</div>
+</div>
+<button class="w-full py-3 px-4 mb-8 bg-secondary-container text-on-secondary-container rounded-xl font-bold flex items-center justify-center gap-2 hover:translate-x-1 transition-all group">
+<span class="material-symbols-outlined text-sm">add</span>
+                    New Object
+                </button>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 text-[#69daff] bg-[#171a1d] rounded-r-full py-3 px-4 border-l-4 border-[#69daff] translate-x-1 transition-all" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">Projects</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">Assets</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">auto_fix_high</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">Mechanics</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">database</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">Variables</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">History</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-outline-variant/10">
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 text-slate-500 py-2 px-4 hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">Documentation</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-2 px-4 hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">Support</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 bg-[#0c0e11] blueprint-grid overflow-y-auto p-8 relative">
+<!-- Hero Header Section -->
+<section class="mb-12 flex justify-between items-end">
+<div>
+<h1 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2 uppercase">Project Library</h1>
+<p class="text-on-surface-variant font-body text-sm max-w-md">Orchestrate your mechanics, visual assets, and game balance in a high-fidelity workspace designed for alchemists.</p>
+</div>
+<div class="flex gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary">search</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-sm font-body w-64 focus:ring-1 focus:ring-primary/40 focus:bg-surface-container transition-all" placeholder="Filter projects..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Bento Grid Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- New Project Card (Action Primary) -->
+<button class="flex flex-col items-center justify-center h-[320px] rounded-xl bg-surface-container-low border-2 border-dashed border-outline-variant/20 hover:border-primary/40 hover:bg-surface-container transition-all group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl text-primary">add</span>
+</div>
+<span class="font-headline font-bold text-lg text-primary">Create New Project</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-slate-500 mt-1">Start from scratch or template</span>
+</button>
+<!-- Project Card 1 -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden hover:bg-surface-container transition-all flex flex-col h-[320px]">
+<div class="h-40 w-full overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Cinematic fantasy card art featuring an ethereal forest with glowing spores and a mysterious stone gateway" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5ZNugWRRQxJ3lnbujuJm4NdJ3q5ejtdiYScHo6Rv4aqGTrUgOMHxJfDBTsI0xH0940PyOB8lMOw-TyVl7SaruCXKqh3KHshOWNC3atNgz6bE76ClFSYJDT9CtFZS5E9hn_iIZeA-GO3QJFmJY50wrlAgCzUDoMZqD4qWIpWt-rZyBq9RhKGqP4z6zIx1TY8Mmrc2whUb4xeRUWw34Fb-rCJJT2D-WzE6-mE89rkTRE22Dag4nt73CZPwvxbyT7vY2P1EO4niD124"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<div class="absolute top-3 right-3">
+<span class="px-2 py-1 bg-tertiary-container/20 text-tertiary-container text-[10px] font-label font-bold uppercase rounded-full backdrop-blur-md">Active</span>
+</div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline font-bold text-xl text-on-surface">Ethereal Realms</h3>
+<button class="text-slate-500 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+<p class="text-on-surface-variant font-body text-xs line-clamp-2 mb-4">A tactical combat TCG focusing on resource management and environmental effects.</p>
+<div class="mt-auto flex justify-between items-center border-t border-outline-variant/10 pt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-slate-500">schedule</span>
+<span class="text-[10px] font-label text-slate-500 uppercase tracking-tight">Edited 2h ago</span>
+</div>
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of a creative professional designer avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjOuXkmoVpGQqDUY2HcKAtuGIdOI-Xv-V7HADxO5-dFcEY2hWizKCmwgnIGOw9DbrprWjUk-DpzkyqG5UHzqJjfjV_Li1aFyrbv5BwUH0C2zF01Besa1FstBQk07p5vDROVm8KOmcU6CttatKE3RZkLW7Rkyfy-8I3izVig4M7_01PJCurZqMEDFPdfo1LZOzD1-wfuO9sts-o81khbGom9HB98adSgc0h_pno8bevXZEubU7FaptEKq_0DC1fa3zHgg4c8vpAlFY"/>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-surface-container-highest flex items-center justify-center text-[8px] font-bold">+2</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden hover:bg-surface-container transition-all flex flex-col h-[320px]">
+<div class="h-40 w-full overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Sleek futuristic cybernetic interface with neon blue and purple data visualizations and circuit patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAymqkQrgRGbNUWCP4x4ED-Vg4VcvMeXPXDGHmPqKD2-4W85ygKobWtr5BF9qVXX_xaGiNneYYMkcY2uNbOdqJgTbKZdX6VRQtRucqYnz_HGwxNUx8nataHJUuHvonEwv2VXDsYWTtBC9G7hWio0AmUNKvfDvBqsJa9p04xQV6y-xYJcczdNjt2CBsXgsMvgm27A2BlzZLrZ04ezlTxXjkthOKLc_dzS6eri-4aRPmkN5Gn9XK1kUUMa68ZkyFKEm7pjw0vA-GeghE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<div class="absolute top-3 right-3">
+<span class="px-2 py-1 bg-secondary-container/20 text-secondary-container text-[10px] font-label font-bold uppercase rounded-full backdrop-blur-md">Archived</span>
+</div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline font-bold text-xl text-on-surface">Neon Circuitry</h3>
+<button class="text-slate-500 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+<p class="text-on-surface-variant font-body text-xs line-clamp-2 mb-4">Cyberpunk deckbuilder with hacking mechanics and modular hardware upgrades.</p>
+<div class="mt-auto flex justify-between items-center border-t border-outline-variant/10 pt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-slate-500">schedule</span>
+<span class="text-[10px] font-label text-slate-500 uppercase tracking-tight">Edited 3 days ago</span>
+</div>
+<span class="material-symbols-outlined text-sm text-slate-500">lock</span>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="group relative bg-surface-container-low rounded-xl overflow-hidden hover:bg-surface-container transition-all flex flex-col h-[320px]">
+<div class="h-40 w-full overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Vibrant hand-painted watercolor style illustration of a cozy alchemist's shop with floating potions and cats" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTn7vvMj3RGQ5IN2U-ngGHRogFR--RUzcYSHxnNn3HZMybmkubbpWsgfE8Gk-GOvBVNyh6eg1LGmJyWCpCJJEBWFJGxwCf6W2gw5fxIVY0lRrpStGeqUxppOYK6hX90Fi1kLaeKNTokftfpEvQ8l5HqQSEQ1PR-7PNbK9q3RHTQ9z5VYdoAyOm6mE5uLo_b0pXLw8nAv9Bt3XTWZ0pFVWCxaf87DIxjeF6JxJwBtvQAzT6ShTwv_e-o3YYCou0e4fIdfx9uUzMpwg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline font-bold text-xl text-on-surface">Potion Craft</h3>
+<button class="text-slate-500 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</div>
+<p class="text-on-surface-variant font-body text-xs line-clamp-2 mb-4">Cozy card game centered around gathering ingredients and crafting magical elixirs.</p>
+<div class="mt-auto flex justify-between items-center border-t border-outline-variant/10 pt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-slate-500">schedule</span>
+<span class="text-[10px] font-label text-slate-500 uppercase tracking-tight">Edited 1 week ago</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-label text-on-surface-variant font-bold">FAVORITE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Template Placeholder -->
+<div class="group relative bg-surface-container-low/50 border border-outline-variant/10 rounded-xl overflow-hidden hover:bg-surface-container transition-all flex flex-col h-[320px] opacity-70 hover:opacity-100">
+<div class="h-40 w-full bg-surface-container flex items-center justify-center relative">
+<span class="material-symbols-outlined text-4xl text-slate-600">collections_bookmark</span>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline font-bold text-xl text-on-surface-variant">Quick Starter</h3>
+</div>
+<p class="text-on-surface-variant/60 font-body text-xs mb-4">Standard 60-card deck layout with basic balance curves pre-configured.</p>
+<div class="mt-auto">
+<button class="text-[10px] font-label font-bold text-primary uppercase tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">
+                                Use Template <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Stats Overlay (Bottom Floating) -->
+<div class="fixed bottom-8 right-8 flex gap-4 pointer-events-none">
+<div class="glass-panel p-4 rounded-xl shadow-2xl border border-outline-variant/10 pointer-events-auto flex gap-6 items-center">
+<div class="flex flex-col">
+<span class="text-[10px] font-label text-slate-500 uppercase tracking-widest mb-1">Total Objects</span>
+<span class="text-2xl font-headline font-bold text-primary">1,248</span>
+</div>
+<div class="w-px h-8 bg-outline-variant/20"></div>
+<div class="flex flex-col">
+<span class="text-[10px] font-label text-slate-500 uppercase tracking-widest mb-1">Disk Usage</span>
+<span class="text-2xl font-headline font-bold text-secondary">42.8GB</span>
+</div>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest text-on-surface flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

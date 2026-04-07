@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mist Card | Card Collection Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary-fixed-dim": "#cabaff",
+                "on-primary-container": "#004050",
+                "on-primary-fixed-variant": "#004a5c",
+                "on-tertiary-fixed-variant": "#6f165a",
+                "outline": "#747579",
+                "on-tertiary": "#71175b",
+                "tertiary-dim": "#f084cc",
+                "inverse-surface": "#f9f9fd",
+                "surface-container-high": "#1d2024",
+                "surface-bright": "#292c31",
+                "surface-container-low": "#111417",
+                "surface-container-lowest": "#000000",
+                "tertiary-container": "#ff91da",
+                "inverse-primary": "#006880",
+                "secondary-dim": "#7e51ff",
+                "on-secondary": "#25006b",
+                "on-tertiary-fixed": "#3f0032",
+                "inverse-on-surface": "#535559",
+                "secondary": "#a68cff",
+                "on-secondary-fixed": "#3b00a0",
+                "error-container": "#a70138",
+                "surface-variant": "#23262a",
+                "surface-tint": "#69daff",
+                "on-primary-fixed": "#002a35",
+                "secondary-container": "#591adc",
+                "on-error-container": "#ffb2b9",
+                "surface-dim": "#0c0e11",
+                "on-background": "#f9f9fd",
+                "on-tertiary-container": "#640951",
+                "on-surface": "#f9f9fd",
+                "surface": "#0c0e11",
+                "background": "#0c0e11",
+                "surface-container": "#171a1d",
+                "primary": "#69daff",
+                "primary-container": "#00cffc",
+                "primary-fixed": "#00cffc",
+                "error-dim": "#d73357",
+                "on-secondary-container": "#e4daff",
+                "tertiary": "#ffa9df",
+                "primary-dim": "#00c0ea",
+                "outline-variant": "#46484b",
+                "tertiary-fixed-dim": "#f084cc",
+                "tertiary-fixed": "#ff91da",
+                "on-error": "#490013",
+                "on-secondary-fixed-variant": "#591bdc",
+                "primary-fixed-dim": "#00c0ea",
+                "on-primary": "#004a5d",
+                "on-surface-variant": "#aaabaf",
+                "surface-container-highest": "#23262a",
+                "secondary-fixed": "#d8caff",
+                "error": "#ff6e84"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0c0e11; color: #f9f9fd; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .font-label { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(35, 38, 42, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full px-6 py-3 bg-[#111417]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#69daff] font-headline">Mist Card</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-400 font-medium hover:text-[#69daff] transition-colors duration-200 font-body" href="#">Editor</a>
+<a class="text-[#69daff] border-b-2 border-[#69daff] pb-1 font-bold font-body" href="#">Collections</a>
+<a class="text-slate-400 font-medium hover:text-[#69daff] transition-colors duration-200 font-body" href="#">Playtest</a>
+<a class="text-slate-400 font-medium hover:text-[#69daff] transition-colors duration-200 font-body" href="#">Market</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-400 hover:text-[#69daff] transition-all active:scale-95"><span class="material-symbols-outlined">settings</span></button>
+<button class="p-2 text-slate-400 hover:text-[#69daff] transition-all active:scale-95"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 text-slate-400 hover:text-[#69daff] transition-all active:scale-95"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant opacity-20"></div>
+<button class="px-4 py-1.5 text-sm font-semibold text-slate-300 hover:text-white transition-all">Export</button>
+<button class="px-4 py-1.5 bg-primary text-on-primary rounded-lg font-bold shadow-lg shadow-primary/20 hover:brightness-110 active:scale-95 transition-all">Deploy</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#111417] w-64 shadow-2xl pt-16">
+<div class="px-6 py-8">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-surface-container rounded-lg flex items-center justify-center overflow-hidden">
+<img alt="Project Logo" class="w-full h-full object-cover" data-alt="Abstract geometric emblem representing digital alchemy, neon cyan glow on dark charcoal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcC5o6t-ZzBEN03c3lgO_bay32FKHb9TD1N_yOfciek408qR-U1fY71LDIc0CQeNptEf4rNe8J4PAFU-j7F_4whG8KLcW3oHXHlIH9ovJkP7QDNUmuVemw2Qg7bjrZ9p4Xtn6buvCrf_PSPmHin0Bpo5Gmd8X5gGH_J-RrbnyTtHVbBmpOyFu7pJQnqbjvaxe0amI8-BQZ8hr5J71s1qZjNE8-akXXY70NEK1nP3L-cZTrFFPvxV_-akHxLJj4EolePkhiZ8SVmY4"/>
+</div>
+<div>
+<div class="text-lg font-bold text-[#69daff] font-headline leading-tight">Core Set 2024</div>
+<div class="text-[10px] text-slate-500 font-label tracking-widest uppercase">v1.0.4-alpha</div>
+</div>
+</div>
+<button class="w-full py-3 bg-secondary-container text-white rounded-xl font-bold flex items-center justify-center gap-2 mb-8 hover:brightness-110 transition-all active:translate-y-0.5">
+<span class="material-symbols-outlined">add_circle</span>
+                New Object
+            </button>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 rounded-r-full font-label text-xs tracking-[0.1em] uppercase transition-all" href="#">
+<span class="material-symbols-outlined">folder</span>
+                    Projects
+                </a>
+<a class="flex items-center gap-3 text-[#69daff] bg-[#171a1d] rounded-r-full py-3 px-4 border-l-4 border-[#69daff] font-label text-xs tracking-[0.1em] uppercase translate-x-1" href="#">
+<span class="material-symbols-outlined">style</span>
+                    Assets
+                </a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 rounded-r-full font-label text-xs tracking-[0.1em] uppercase transition-all" href="#">
+<span class="material-symbols-outlined">auto_fix_high</span>
+                    Mechanics
+                </a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 rounded-r-full font-label text-xs tracking-[0.1em] uppercase transition-all" href="#">
+<span class="material-symbols-outlined">database</span>
+                    Variables
+                </a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-4 hover:bg-[#171a1d] hover:text-slate-200 rounded-r-full font-label text-xs tracking-[0.1em] uppercase transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+                    History
+                </a>
+</nav>
+</div>
+<div class="mt-auto px-6 py-6 border-t border-outline-variant/10">
+<nav class="space-y-1">
+<a class="flex items-center gap-3 text-slate-500 py-2 px-4 hover:text-slate-200 font-label text-xs tracking-[0.1em] uppercase transition-all" href="#">
+<span class="material-symbols-outlined text-sm">description</span>
+                    Documentation
+                </a>
+<a class="flex items-center gap-3 text-slate-500 py-2 px-4 hover:text-slate-200 font-label text-xs tracking-[0.1em] uppercase transition-all" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+                    Support
+                </a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pl-64 pt-16 min-h-screen flex flex-col bg-surface overflow-hidden">
+<!-- Dashboard Header / Controls Section -->
+<section class="px-8 py-6 bg-surface-container-low flex flex-col gap-6">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="text-3xl font-bold font-headline tracking-tight text-on-surface">Card Collection</h1>
+<p class="text-on-surface-variant font-label text-xs tracking-wider uppercase mt-1">428 cards in library</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-lg border border-outline-variant/20 hover:border-primary/50 transition-all font-body text-sm">
+<span class="material-symbols-outlined text-[18px]">file_upload</span>
+                        Import CSV
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg border border-primary/20 hover:bg-primary/20 transition-all font-body text-sm">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+                        Export Selected
+                    </button>
+</div>
+</div>
+<!-- Advanced Filter Bar -->
+<div class="flex flex-wrap items-center gap-4 bg-surface-container p-4 rounded-xl">
+<div class="relative flex-grow max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary placeholder-on-surface-variant/50 font-body" placeholder="Search by name, ability, or tag..." type="text"/>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/20"></div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-label font-bold text-on-surface-variant uppercase tracking-widest">Type</span>
+<select class="bg-surface-container-low border-none rounded-lg text-sm font-body px-3 py-1.5 focus:ring-1 focus:ring-primary">
+<option>All Types</option>
+<option>Creature</option>
+<option>Spell</option>
+<option>Artifact</option>
+<option>Enchantment</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-label font-bold text-on-surface-variant uppercase tracking-widest">Rarity</span>
+<select class="bg-surface-container-low border-none rounded-lg text-sm font-body px-3 py-1.5 focus:ring-1 focus:ring-primary">
+<option>All Rarities</option>
+<option>Common</option>
+<option>Uncommon</option>
+<option>Rare</option>
+<option>Legendary</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-label font-bold text-on-surface-variant uppercase tracking-widest">Cost</span>
+<div class="flex items-center gap-1">
+<input class="w-16 bg-surface-container-low border-none rounded-lg text-sm font-body px-2 py-1.5 focus:ring-1 focus:ring-primary" placeholder="Min" type="number"/>
+<span class="text-on-surface-variant">-</span>
+<input class="w-16 bg-surface-container-low border-none rounded-lg text-sm font-body px-2 py-1.5 focus:ring-1 focus:ring-primary" placeholder="Max" type="number"/>
+</div>
+</div>
+<button class="ml-auto p-2 hover:bg-surface-container-highest rounded-lg transition-all text-on-surface-variant" title="Bulk Actions">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</section>
+<!-- Spreadsheet View Section -->
+<section class="flex-grow overflow-auto no-scrollbar px-8 pb-8 bg-surface">
+<div class="min-w-[1000px] mt-4">
+<table class="w-full text-left border-separate border-spacing-y-2">
+<thead>
+<tr class="text-primary font-label text-[10px] tracking-widest uppercase">
+<th class="pb-3 pl-4 w-10"><input class="rounded bg-surface-container-highest border-none text-primary focus:ring-primary ring-offset-background" type="checkbox"/></th>
+<th class="pb-3 px-4">Thumbnail</th>
+<th class="pb-3 px-4">Name</th>
+<th class="pb-3 px-4">Type</th>
+<th class="pb-3 px-4">Cost</th>
+<th class="pb-3 px-4">Rarity</th>
+<th class="pb-3 px-4">Set</th>
+<th class="pb-3 px-4">Last Modified</th>
+<th class="pb-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-sm font-body">
+<!-- Row 1 -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-all group cursor-pointer group">
+<td class="py-4 pl-4 rounded-l-xl"><input class="rounded bg-surface-container-highest border-none text-primary focus:ring-primary ring-offset-background" type="checkbox"/></td>
+<td class="py-4 px-4">
+<div class="w-12 h-16 rounded overflow-hidden bg-surface-container-low border border-outline-variant/10">
+<img alt="Card Art" class="w-full h-full object-cover" data-alt="Glowing ethereal wolf spirit in a dark misty forest, digital fantasy art style, vibrant blue highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV34lNsmQW-MKV2MJ-9C_N_BOPGoB0Exyo7SUmawqVPDSIGg6M5IYgXDVDBXosOjsVatwzwJKkJhduy8123Zfl9HauubWuuqzucMqjgnrXut5iXrw7LxzRxJAUVCrZKUMMEaZznml7HK5m2Q7WvoHRgZh1XK_4yMJ3iQScA1icXF2kNiMI4cE8jIlrx_-zIp1SOLKAYQUYrYL5JNfs1sH9LRi4C10pV_XhGctOP0vHB2GmPBFPo-LzNMDW8HBXFd78oX9iWfr6YQI"/>
+</div>
+</td>
+<td class="py-4 px-4 font-bold text-on-surface">Spirit of the Mist</td>
+<td class="py-4 px-4">
+<span class="bg-tertiary-container/10 text-tertiary px-3 py-1 rounded-full text-xs font-label uppercase tracking-tighter">Creature</span>
+</td>
+<td class="py-4 px-4 font-label font-medium text-primary">3 <span class="text-slate-500">U</span></td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(166,140,255,0.6)]"></div>
+<span class="text-on-surface-variant">Rare</span>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant italic">Core Set 24</td>
+<td class="py-4 px-4 text-on-surface-variant/60 text-xs">2 mins ago</td>
+<td class="py-4 px-4 text-right rounded-r-xl">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-primary transition-all"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-error-dim transition-all"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low hover:bg-surface-container-high transition-all group cursor-pointer">
+<td class="py-4 pl-4 rounded-l-xl"><input class="rounded bg-surface-container-highest border-none text-primary focus:ring-primary ring-offset-background" type="checkbox"/></td>
+<td class="py-4 px-4">
+<div class="w-12 h-16 rounded overflow-hidden bg-surface-container-low border border-outline-variant/10">
+<img alt="Card Art" class="w-full h-full object-cover" data-alt="Mechanical copper gear clockwork heart floating over dark blueprint papers, cinematic lighting, gold and rust colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjwRDNccXnkLPL1pLhk9222N760IgF2ThIzVqNR-nnoDONxXoKrtcCEBPZ_J02C6xoLi4cgtF6kXHHgd_pTIcDzK-n-kHwAZNj07gQQydXplux5z2KP4ECixa7FG85DOjSGVvpj4-bn-cvDKbprIZaWhHn94iZUDomQqzhMV_iQc2rW_EKi9tO_SBZNvPM5gLq_7lA8scj-2h3Q69Ibt42tkw669AsbEvUblqGoDoFiPZOLuwFmJahgfa1Fa8VgZAVXOoAx_vpB9w"/>
+</div>
+</td>
+<td class="py-4 px-4 font-bold text-on-surface">Clockwork Core</td>
+<td class="py-4 px-4">
+<span class="bg-tertiary-container/10 text-tertiary px-3 py-1 rounded-full text-xs font-label uppercase tracking-tighter">Artifact</span>
+</td>
+<td class="py-4 px-4 font-label font-medium text-primary">2</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<span class="text-on-surface-variant">Common</span>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant italic">Core Set 24</td>
+<td class="py-4 px-4 text-on-surface-variant/60 text-xs">1 hour ago</td>
+<td class="py-4 px-4 text-right rounded-r-xl">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-primary transition-all"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-error-dim transition-all"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-all group cursor-pointer">
+<td class="py-4 pl-4 rounded-l-xl"><input class="rounded bg-surface-container-highest border-none text-primary focus:ring-primary ring-offset-background" type="checkbox"/></td>
+<td class="py-4 px-4">
+<div class="w-12 h-16 rounded overflow-hidden bg-surface-container-low border border-outline-variant/10">
+<img alt="Card Art" class="w-full h-full object-cover" data-alt="Violent storm clouds with purple lightning striking a obsidian spire, dramatic high contrast, volumetric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyWlRpCkOGwwUGA6IHQf0hsslayUZtJp9jC3D2bbImo4UDW3yiIsX0laZa-snU3mRR_si7449s2J4AQwCa04L1MPJOtF7AMTUB7i84cMFP55Dk6EOcmEbfHplln7N2xoYWn-pqEvLyT-k8HDWUOeqD6yc2V19U8M7PPR-pkTxDMn9a6T-j1GFsCUZvMXWEGjTu3ohNpmiYa1XqQ6BjD6NRwLQGLXY06V4oTgYUTyVAxZ9wvxAvIDt7DSflFx7lTCewlzuCFPPt_II"/>
+</div>
+</td>
+<td class="py-4 px-4 font-bold text-on-surface">Void Rupture</td>
+<td class="py-4 px-4">
+<span class="bg-tertiary-container/10 text-tertiary px-3 py-1 rounded-full text-xs font-label uppercase tracking-tighter">Spell</span>
+</td>
+<td class="py-4 px-4 font-label font-medium text-primary">5 <span class="text-slate-500">BB</span></td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_rgba(255,110,132,0.6)]"></div>
+<span class="text-on-surface-variant">Legendary</span>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant italic">Void Expansion</td>
+<td class="py-4 px-4 text-on-surface-variant/60 text-xs">Yesterday</td>
+<td class="py-4 px-4 text-right rounded-r-xl">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-primary transition-all"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-error-dim transition-all"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low hover:bg-surface-container-high transition-all group cursor-pointer">
+<td class="py-4 pl-4 rounded-l-xl"><input class="rounded bg-surface-container-highest border-none text-primary focus:ring-primary ring-offset-background" type="checkbox"/></td>
+<td class="py-4 px-4">
+<div class="w-12 h-16 rounded overflow-hidden bg-surface-container-low border border-outline-variant/10">
+<img alt="Card Art" class="w-full h-full object-cover" data-alt="Close up of an ancient parchment with glowing golden runes, soft focus dust particles, warm historical mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNWERyOU9VY30R9lt5Xf585s4il-zH5w_xFceR1FoP5QLcV5AFN5txrZvun_pEfOl2gXN0T0tYhM5ycvr841oWP205QWzkli7wlCnORejK_6L-y2jkmJpg51qUIKpHWol7ASVdP8pncMhkrwTfbNGICRyC-jI1l0X4KCfEVk6xF3gazgrqX5e0gmVr9TySFzDdvxu4H2o3AL70ztsIE-80OijRawhzkZ1JlxjDDXRHqx_unyMSZ_fjHQ3Opu-9Lf_c9EyNB18Qhak"/>
+</div>
+</td>
+<td class="py-4 px-4 font-bold text-on-surface">Ancient Decree</td>
+<td class="py-4 px-4">
+<span class="bg-tertiary-container/10 text-tertiary px-3 py-1 rounded-full text-xs font-label uppercase tracking-tighter">Enchantment</span>
+</td>
+<td class="py-4 px-4 font-label font-medium text-primary">1 <span class="text-slate-500">W</span></td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(105,218,255,0.6)]"></div>
+<span class="text-on-surface-variant">Uncommon</span>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant italic">Core Set 24</td>
+<td class="py-4 px-4 text-on-surface-variant/60 text-xs">3 days ago</td>
+<td class="py-4 px-4 text-right rounded-r-xl">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-primary transition-all"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-error-dim transition-all"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Quick View Side Drawer (Glassmorphic) -->
+<div class="fixed top-20 right-6 w-80 h-[calc(100vh-6rem)] glass-panel rounded-2xl p-6 border border-outline-variant/10 hidden lg:flex flex-col shadow-2xl z-30">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline font-bold text-lg">Selection Info</h3>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="relative w-full aspect-[3/4] bg-surface-container-lowest rounded-xl overflow-hidden mb-6 border border-primary/20 group">
+<img alt="Preview Image" class="w-full h-full object-cover" data-alt="Full detailed trading card design, ornate silver frame, portrait of a cosmic entity, glowing neon stars background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1PzukNcTFdEj3UWwfX_rAYs321bd_UejIApQmK-VGxKNNy94jqVLFpASvItjn4gfXEO1Vqt70prABXEju9odkoXEQ65GuWdBdN8jmfPAFVAsPXEEPejbtRK3npFRzPNHvWND42QjbvN65sxRa4KEc5MCdi9WbH05G6Xr5BllqaQ7NqRkSPNx5b06UQDfPx0WVzsN3f5e482carKwCi104q6Ee8pPAHT7rUyCBl1hHFvBGqpaBxOBKqDgedOSi82Se7RXmIzwaRwA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-40"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="font-headline font-bold text-xl leading-tight">Spirit of the Mist</p>
+<p class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Rare Creature</p>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<label class="text-[10px] font-label font-bold text-on-surface-variant uppercase tracking-widest mb-1 block">Mechanics</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container rounded text-[10px] font-medium border border-outline-variant/10">Flying</span>
+<span class="px-2 py-1 bg-surface-container rounded text-[10px] font-medium border border-outline-variant/10">Mistform</span>
+</div>
+</div>
+<div>
+<label class="text-[10px] font-label font-bold text-on-surface-variant uppercase tracking-widest mb-1 block">Flavor Text</label>
+<p class="text-xs text-on-surface-variant italic leading-relaxed">"What you see is merely a suggestion of its presence."</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/10">
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-bold text-sm hover:brightness-110 active:scale-95 transition-all">Open Full Editor</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Suppressing as per mandate since this is a Data Management/spreadsheet screen) -->
+<!-- Suppression Logic: High-density data table/editor context. Navigation shell priority. -->
+</body></html>
