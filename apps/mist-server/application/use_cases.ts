@@ -4,6 +4,7 @@
 
 import { Container } from '../infrastructure/dependency_container.ts'
 import { Game, Card, createGame, createCard } from '../domain/entities.ts'
+import { WebSocketController } from '../presentation/websocket_controller.ts'
 
 export class CreateGameUseCase {
   private gameRepository = Container.getGameRepository()
@@ -12,6 +13,13 @@ export class CreateGameUseCase {
     // Validation is handled by the Game constructor
     const game = createGame(name, description)
     await this.gameRepository.saveItem(game)
+    
+    // Broadcast to all WebSocket clients
+    WebSocketController.broadcast(JSON.stringify({
+      type: 'gameCreated',
+      data: game
+    }))
+    
     return game
   }
 }
@@ -51,6 +59,13 @@ export class UpdateGameUseCase {
     }
     
     await this.gameRepository.saveItem(existingGame)
+    
+    // Broadcast to all WebSocket clients
+    WebSocketController.broadcast(JSON.stringify({
+      type: 'gameUpdated',
+      data: existingGame
+    }))
+    
     return existingGame
   }
 }
@@ -66,10 +81,22 @@ export class DeleteGameUseCase {
     
     for (const card of gameCards) {
       await this.cardRepository.deleteById(card.id)
+      
+      // Broadcast card deletion
+      WebSocketController.broadcast(JSON.stringify({
+        type: 'cardDeleted',
+        data: { id: card.id }
+      }))
     }
     
     // Then delete the game
     await this.gameRepository.deleteById(id)
+    
+    // Broadcast game deletion
+    WebSocketController.broadcast(JSON.stringify({
+      type: 'gameDeleted',
+      data: { id }
+    }))
   }
 }
 
@@ -103,6 +130,13 @@ export class CreateCardUseCase {
     // Validation is handled by the Card constructor
     const card = createCard(name, gameId)
     await this.cardRepository.saveItem(card)
+    
+    // Broadcast to all WebSocket clients
+    WebSocketController.broadcast(JSON.stringify({
+      type: 'cardCreated',
+      data: card
+    }))
+    
     return card
   }
 }
@@ -136,6 +170,13 @@ export class UpdateCardUseCase {
     existingCard.updateName(name)
     
     await this.cardRepository.saveItem(existingCard)
+    
+    // Broadcast to all WebSocket clients
+    WebSocketController.broadcast(JSON.stringify({
+      type: 'cardUpdated',
+      data: existingCard
+    }))
+    
     return existingCard
   }
 }
@@ -145,6 +186,12 @@ export class DeleteCardUseCase {
   
   async execute(id: string): Promise<void> {
     await this.cardRepository.deleteById(id)
+    
+    // Broadcast to all WebSocket clients
+    WebSocketController.broadcast(JSON.stringify({
+      type: 'cardDeleted',
+      data: { id }
+    }))
   }
 }
 

@@ -4,6 +4,7 @@
 import { LowdbRepository } from '../persistence/lowdb_repository.ts'
 import { Game, Card } from '../domain/entities.ts'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
 export class Container {
   private static gameRepository: LowdbRepository<Game>
@@ -11,6 +12,7 @@ export class Container {
   
   static getGameRepository(): LowdbRepository<Game> {
     if (!this.gameRepository) {
+      const __dirname = path.dirname(fileURLToPath(import.meta.url))
       const dataDir = path.join(__dirname, '../../data')
       this.gameRepository = new LowdbRepository<Game>(path.join(dataDir, 'games.json'))
     }
@@ -19,6 +21,7 @@ export class Container {
   
   static getCardRepository(): LowdbRepository<Card> {
     if (!this.cardRepository) {
+      const __dirname = path.dirname(fileURLToPath(import.meta.url))
       const dataDir = path.join(__dirname, '../../data')
       this.cardRepository = new LowdbRepository<Card>(path.join(dataDir, 'cards.json'))
     }

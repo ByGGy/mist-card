@@ -23,6 +23,7 @@ export const connectWebSocket = (): Promise<void> => {
     socket.onmessage = (event) => {
       try {
         const message = JSON.parse(event.data)
+        console.log(JSON.stringify(message, null, 8))
         if (message.id !== undefined && callbacks[message.id]) {
           callbacks[message.id](message.data)
           delete callbacks[message.id]
@@ -50,7 +51,7 @@ export const fetchGames = (): Promise<any> => {
     const id = messageId++
     callbacks[id] = resolve
 
-    socket.send(JSON.stringify({ id, type: 'fetchGames' }))
+    socket.send(JSON.stringify({ id, type: 'getAllGames' }))
 
     setTimeout(() => {
       if (callbacks[id]) {
@@ -72,7 +73,7 @@ export const fetchCards = (gameId: string): Promise<any> => {
     const id = messageId++
     callbacks[id] = resolve
 
-    socket.send(JSON.stringify({ id, type: 'fetchCards', gameId }))
+    socket.send(JSON.stringify({ id, type: 'getCardsByGameId', gameId }))
 
     setTimeout(() => {
       if (callbacks[id]) {
