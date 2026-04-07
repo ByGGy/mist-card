@@ -17,6 +17,45 @@
       ::-webkit-scrollbar { width: 6px; }
       ::-webkit-scrollbar-track { background: #0c0e11; }
       ::-webkit-scrollbar-thumb { background: #23262a; border-radius: 10px; }
+      
+      /* Fix for input field text visibility */
+      input, textarea, select {
+        color: #f9f9fd !important;
+        background-color: #111417 !important;
+        border-color: #46484b !important;
+      }
+      
+      input::placeholder, textarea::placeholder {
+        color: #747579 !important;
+        opacity: 1 !important;
+      }
+      
+      /* Ensure buttons have proper text color */
+      button {
+        color: inherit !important;
+      }
+      
+      /* Tailwind color classes for our dark theme */
+      .bg-surface-container-low { background-color: #111417 !important; }
+      .bg-surface-container { background-color: #171a1d !important; }
+      .bg-surface-container-highest { background-color: #23262a !important; }
+      .bg-surface-variant { background-color: #23262a !important; }
+      .bg-primary { background-color: #69daff !important; }
+      .bg-primary-container { background-color: #00cffc !important; }
+      .bg-secondary-container { background-color: #591adc !important; }
+      .bg-error { background-color: #ff6e84 !important; }
+      
+      .text-on-surface { color: #f9f9fd !important; }
+      .text-on-surface-variant { color: #aaabaf !important; }
+      .text-on-primary { color: #004a5d !important; }
+      .text-on-secondary-container { color: #e4daff !important; }
+      .text-on-error { color: #490013 !important; }
+      .text-primary { color: #69daff !important; }
+      .text-secondary { color: #a68cff !important; }
+      .text-tertiary-container { color: #ff91da !important; }
+      
+      .border-outline-variant\/20 { border-color: rgba(70, 72, 75, 0.2) !important; }
+      .border-outline-variant\/10 { border-color: rgba(70, 72, 75, 0.1) !important; }
     </style>
   </head>
   <body>

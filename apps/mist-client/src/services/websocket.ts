@@ -2,7 +2,7 @@
 // Handles WebSocket connections and message routing
 
 // WebSocket Service Implementation
-class WebSocketService {
+export class WebSocketService {
   private socket: WebSocket | null = null
   private listeners: Map<string, (data: any) => void> = new Map()
   private url: string
@@ -16,6 +16,10 @@ class WebSocketService {
   connect(): void {
     this.socket = new WebSocket(this.url)
     this.setupEventHandlers()
+  }
+
+  isConnected(): boolean {
+    return this.socket?.readyState === WebSocket.OPEN
   }
 
   private setupEventHandlers(): void {
@@ -40,6 +44,7 @@ class WebSocketService {
   }
 
   private handleMessage(message: any): void {
+    console.log(`received: ${JSON.stringify(message, null, 2)}`)
     const handler = this.listeners.get(message.type)
     if (handler) {
       handler(message.data)
@@ -60,11 +65,13 @@ class WebSocketService {
 
   send(type: string, data: any, requestId?: string): void {
     if (this.socket?.readyState === WebSocket.OPEN) {
-      this.socket.send(JSON.stringify({
+      const message = JSON.stringify({
         type,
         ...data,
         ...(requestId && { requestId })
-      }))
+      }, null, 2)
+      console.log(`sending: ${message}`)
+      this.socket.send(message)
     }
   }
 
@@ -89,5 +96,3 @@ class WebSocketService {
     this.reconnectAttempts = 0
   }
 }
-
-export default WebSocketService

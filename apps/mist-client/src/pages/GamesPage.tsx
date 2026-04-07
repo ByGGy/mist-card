@@ -2,7 +2,7 @@
 // CRUD interface for managing games
 
 import React, { useState, useEffect } from 'react'
-import { useGames } from '../hooks/useGames.js'
+import { useGames } from '../hooks/useGames.ts'
 import { Link } from 'react-router-dom'
 
 export const GamesPage: React.FC = () => {

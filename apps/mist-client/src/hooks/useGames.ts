@@ -2,27 +2,20 @@
 // Provides game-related state and actions to components
 
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState, AppDispatch } from '../store/store.js'
+import { RootState, AppDispatch } from '../store/store.ts'
 import { useEffect, useCallback } from 'react'
-import WebSocketService from '../services/websocket.js'
+import { useWebSocket } from '../context/WebSocketContext.tsx'
 
 export const useGames = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { games, cards, loading, error } = useSelector((state: RootState) => state.games)
-  const websocket = new WebSocketService('ws://localhost:8080')
+  const websocket = useWebSocket()
 
-  // Connect WebSocket on component mount
+  // Load initial data when component mounts
   useEffect(() => {
-    websocket.connect()
-
-    // Load initial data
     websocket.send('getAllGames', {}, 'init-games')
     websocket.send('getAllCards', {}, 'init-cards')
-
-    return () => {
-      websocket.disconnect()
-    }
-  }, [dispatch])
+  }, [websocket, dispatch])
 
   // Memoize action creators to prevent unnecessary re-renders
   const createGame = useCallback((name: string, description: string) => {

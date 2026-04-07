@@ -35,7 +35,8 @@ export class WebSocketRouter {
   async handleMessage(message: string): Promise<void> {
     try {
       const parsed = JSON.parse(message)
-      
+      console.log(`received: ${JSON.stringify(parsed, null, 2)}`)
+
       if (!parsed.type) {
         this.sendError('Message type is required', parsed.requestId)
         return

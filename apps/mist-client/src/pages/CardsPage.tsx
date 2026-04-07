@@ -2,7 +2,7 @@
 // CRUD interface for managing cards within a game
 
 import React, { useState, useEffect } from 'react'
-import { useGames } from '../hooks/useGames.js'
+import { useGames } from '../hooks/useGames.ts'
 import { useSearchParams, Link } from 'react-router-dom'
 
 export const CardsPage: React.FC = () => {

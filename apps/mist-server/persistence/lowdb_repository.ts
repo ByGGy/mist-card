@@ -15,7 +15,7 @@ export class LowdbRepository<T extends Entity> {
     this.db = new Low(adapter)
     this.initialize().catch(console.error)
   }
-  
+
   protected async initialize(): Promise<void> {
     await this.db.read()
     this.db.data ||= { items: [] }

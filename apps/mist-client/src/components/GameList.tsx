@@ -2,7 +2,7 @@
 // Displays list of games with CRUD operations
 
 import React from 'react'
-import { useGames } from '../hooks/useGames.js'
+import { useGames } from '../hooks/useGames.ts'
 
 export const GameList: React.FC = () => {
   const {

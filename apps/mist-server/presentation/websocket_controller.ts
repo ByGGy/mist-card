@@ -14,7 +14,6 @@ export class WebSocketController {
     this.instances.set(ws, router)
     
     ws.on('message', (message: string) => {
-      console.log('Received message:', message)
       router.handleMessage(message).catch(error => {
         console.error('Error handling message:', error)
       })
